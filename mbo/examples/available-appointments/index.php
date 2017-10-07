@@ -1,12 +1,6 @@
 <?php
-require '../../src/MB_API.php';
 require_once('../../lib/helpers.php');
-
-$mb = new \DevinCrossman\Mindbody\MB_API(array(
-	"SourceName"=>'NovoCounselling', 
-	"Password"=>'seOAc4JVBf429rWmHn7hS6lrz6E=', 
-	"SiteIDs"=>array('175244')
-));
+require_once('../../config.php');
 
 // Mistake was had been requesting 'StartDateTime' and 'EndDateTime'
 $data = $mb->GetBookableItems(array( 'SessionTypeIDs'=> array(13, 16),
@@ -28,9 +22,6 @@ if(!empty($data['GetBookableItemsResult']['ScheduleItems']['ScheduleItem'])) {
 		echo '<pre>'.print_r($data,1).'</pre>';
 	}
 }
-
-
-
 
 // Uncommend me to look at the data returned:
 // mz_pr($data);
