@@ -1,12 +1,11 @@
 <?php
-require '../../src/MB_API.php';
-$mb = new \DevinCrossman\Mindbody\MB_API(array(
-	"SourceName"=>'REPLACE_WITH_YOUR_SOURCENAME', 
-	"Password"=>'REPLACE_WITH_YOUR_PASSWORD', 
-	"SiteIDs"=>array('REPLACE_WITH_YOUR_SITE_ID')
-));
 
-$data = $mb->GetClasses(array('StartDateTime'=>date('Y-m-d'), 'EndDateTime'=>date('Y-m-d', strtotime('today + 7 days'))));
+require_once('../../config.php');
+
+$data = $mb->GetClasses(array('StartDateTime'=>date('Y-m-d'), 'EndDateTime'=>date('Y-m-d', strtotime('today + 28 days'))));
+
+$mb->debug();
+							
 if(!empty($data['GetClassesResult']['Classes']['Class'])) {
 	$classes = $mb->makeNumericArray($data['GetClassesResult']['Classes']['Class']);
 	$classes = sortClassesByDate($classes);
