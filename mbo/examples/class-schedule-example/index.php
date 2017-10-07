@@ -1,10 +1,6 @@
 <?php
-require '../../src/MB_API.php';
-$mb = new \DevinCrossman\Mindbody\MB_API(array(
-	"SourceName"=>'NovoCounselling', 
-	"Password"=>'seOAc4JVBf429rWmHn7hS6lrz6E=', 
-	"SiteIDs"=>array('175244')
-));
+
+require_once('../../config.php');
 
 $data = $mb->GetClasses(array('StartDateTime'=>date('Y-m-d'), 'EndDateTime'=>date('Y-m-d', strtotime('today + 28 days'))));
 
