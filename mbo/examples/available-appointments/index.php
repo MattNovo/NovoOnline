@@ -21,7 +21,7 @@ if(!empty($data['GetBookableItemsResult']['ScheduleItems']['ScheduleItem'])) {
 		<tr><th colspan="2" style="background: rgba(158, 255, 202, 1);"><?php echo date("l F j, Y", strtotime($serviceDate)); ?></th></tr>
 		<?php
 		foreach($staffMember as $staff => $services) { 
-			$staffImage = isset($services[0]['Staff']['ImageURL']) ? '<img src="'.$services[0]['Staff']['ImageURL'].'" style="max-width:100px;height:auto;" />' : ''; ?>
+			$staffImage = isset($services[0]['Staff']['ImageURL']) ? '<a href="'.strip_tags($services[0]['Staff']['Bio']).'"><img src="'.$services[0]['Staff']['ImageURL'].'" style="max-width:100px;height:auto;" /></a>' : ''; ?>
 			<tr><td><?php echo $staffImage ?></td>
 			<td> <?php echo $services[0]['Staff']['FirstName']; ?>
 			<table style="border: 1px solid rgba(158, 255, 202, 1);"> <?php
