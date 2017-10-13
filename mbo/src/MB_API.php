@@ -73,6 +73,9 @@ class MB_API {
 				}
 			}
 		}
+		//echo "<pre>";
+		//print_r($this->apiMethods);
+		//echo "</pre>";
 	}
 
 	/*
