@@ -2,10 +2,16 @@
 require_once('../../lib/helpers.php');
 require_once('../../config.php');
 
-// Mistake was had been requesting 'StartDateTime' and 'EndDateTime'
-$data = $mb->GetBookableItems(array( 'SessionTypeIDs'=> array(13), // 13, 16 ProgramIDs from GetService: 2, 9, 11, 15, 27
-								'StartDate'=>date('Y-m-d'), 
-								'EndDate'=>date('Y-m-d', strtotime('today + 1 week'))));
+if ($_GET['reset'] || !$data = unserialize(file_get_contents('mbodata'))) {
+
+	?><h2>Resetting Data</h2><?php
+
+	$data = $mb->GetBookableItems(array( 'SessionTypeIDs'=> array(13), // 13, 16 ProgramIDs from GetService: 2, 9, 11, 15, 27
+									'StartDate'=>date('Y-m-d'), 
+									'EndDate'=>date('Y-m-d', strtotime('today + 1 week'))));
+									
+	file_put_contents('mbodata', serialize($data));
+}
 
 // Uncommend following line to debug request.								
 //$mb->debug();
